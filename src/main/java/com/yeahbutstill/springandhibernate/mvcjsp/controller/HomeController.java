@@ -1,4 +1,4 @@
-package com.yeahbutstill.springandhibernate.mvcjsp;
+package com.yeahbutstill.springandhibernate.mvcjsp.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
