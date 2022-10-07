@@ -1,9 +1,9 @@
-package com.yeahbutstill.springandhibernate;
+package com.yeahbutstill.springandhibernate.partone;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class RESTFortuneService implements FortuneService {
+public class DatabaseFortuneService implements FortuneService {
 
 	@Override
 	public String getFortune() {

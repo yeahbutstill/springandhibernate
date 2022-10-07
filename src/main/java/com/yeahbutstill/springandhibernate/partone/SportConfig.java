@@ -1,7 +1,6 @@
-package com.yeahbutstill.springandhibernate;
+package com.yeahbutstill.springandhibernate.partone;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 

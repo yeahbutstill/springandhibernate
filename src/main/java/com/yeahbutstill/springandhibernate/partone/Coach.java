@@ -1,4 +1,4 @@
-package com.yeahbutstill.springandhibernate;
+package com.yeahbutstill.springandhibernate.partone;
 
 public interface Coach {
 

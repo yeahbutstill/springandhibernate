@@ -1,4 +1,4 @@
-package com.yeahbutstill.springandhibernate;
+package com.yeahbutstill.springandhibernate.partone;
 
 import org.springframework.stereotype.Component;
 
