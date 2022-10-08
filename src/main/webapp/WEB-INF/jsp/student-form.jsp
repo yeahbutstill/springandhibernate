@@ -16,11 +16,10 @@
 		</form:select>
 		<br><br>
 		Favorite Language:
-		<br>
-		Java <form:radiobutton path="favoriteLanguage" value="Java" />
-		C++ <form:radiobutton path="favoriteLanguage" value="Java" />
-		Go <form:radiobutton path="favoriteLanguage" value="Java" />
-		Kotlin <form:radiobutton path="favoriteLanguage" value="Java" />
+		<form:radiobuttons path="favoriteLanguage" items="${student.favoriteLanguageOptions}" />
+		<br><br>
+		Operating System:
+		<form:checkboxes path="operatingSystem" items="${student.operatingSystemOptions}" />
 		<br><br>
 		<input type="submit" value="Submit" />
 	</form:form>

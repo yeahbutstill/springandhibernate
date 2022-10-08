@@ -1,6 +1,9 @@
 package com.yeahbutstill.springandhibernate.mvcjsp.entity;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 public class Student {
 
@@ -9,6 +12,9 @@ public class Student {
     private String country;
     private LinkedHashMap<String, String> countryOptions;
     private String favoriteLanguage;
+    private LinkedHashMap<String, String> favoriteLanguageOptions;
+    private String operatingSystem;
+    private ArrayList<String> operatingSystemOptions;
 
     public Student() {
 
@@ -20,6 +26,32 @@ public class Student {
         countryOptions.put("BDG", "Bandung");
         countryOptions.put("JKT", "Jakarta");
 
+        favoriteLanguageOptions = new LinkedHashMap<>();
+        favoriteLanguageOptions.put("Java", "Java");
+        favoriteLanguageOptions.put("C#", "C#");
+        favoriteLanguageOptions.put("PHP", "PHP");
+        favoriteLanguageOptions.put("Ruby", "Ruby");
+
+        operatingSystemOptions = new ArrayList<>();
+        operatingSystemOptions.add("Linux");
+        operatingSystemOptions.add("Mac OS");
+        operatingSystemOptions.add("Windows");
+    }
+
+    public ArrayList<String> getOperatingSystemOptions() {
+        return operatingSystemOptions;
+    }
+
+    public void setOperatingSystemOptions(ArrayList<String> operatingSystemOptions) {
+        this.operatingSystemOptions = operatingSystemOptions;
+    }
+
+    public LinkedHashMap<String, String> getFavoriteLanguageOptions() {
+        return favoriteLanguageOptions;
+    }
+
+    public void setFavoriteLanguageOptions(LinkedHashMap<String, String> favoriteLanguageOptions) {
+        this.favoriteLanguageOptions = favoriteLanguageOptions;
     }
 
     public String getFirstName() {
@@ -62,4 +94,11 @@ public class Student {
         return countryOptions;
     }
 
+    public String getOperatingSystem() {
+        return operatingSystem;
+    }
+
+    public void setOperatingSystem(String operatingSystem) {
+        this.operatingSystem = operatingSystem;
+    }
 }
