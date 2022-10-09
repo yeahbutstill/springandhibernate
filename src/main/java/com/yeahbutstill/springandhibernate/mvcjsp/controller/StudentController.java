@@ -3,8 +3,11 @@ package com.yeahbutstill.springandhibernate.mvcjsp.controller;
 import com.yeahbutstill.springandhibernate.mvcjsp.entity.Student;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/student")
@@ -22,16 +25,20 @@ public class StudentController {
     }
 
     @RequestMapping("processForm")
-    public String processForm(@ModelAttribute("student") Student theStudent) {
+    public String processForm(@Valid @ModelAttribute("student") Student theStudent, BindingResult theBindingResult) {
 
-        // log the input data
-        System.out.println("theStudent: " + theStudent.getFirstName() + " " + theStudent.getLastName());
-        System.out.println("theStudent country: " + theStudent.getCountry());
-        System.out.println("theStudent favoriteLanguage " + theStudent.getFavoriteLanguage());
-        System.out.println("theStudent operatingSystem " + theStudent.getOperatingSystem());
-        System.out.println("--------------------------------------------------------------------------");
+        if (theBindingResult.hasErrors()) {
+            return "student-form";
+        } else {
+            // log the input data
+            System.out.println("theStudent: " + theStudent.getFirstName() + " " + theStudent.getLastName());
+            System.out.println("theStudent country: " + theStudent.getCountry());
+            System.out.println("theStudent favoriteLanguage " + theStudent.getFavoriteLanguage());
+            System.out.println("theStudent operatingSystem " + theStudent.getOperatingSystem());
+            System.out.println("--------------------------------------------------------------------------");
+            return "student-confirmation";
+        }
 
-        return "student-confirmation";
     }
 
 }

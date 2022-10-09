@@ -1,19 +1,42 @@
 package com.yeahbutstill.springandhibernate.mvcjsp.entity;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedHashMap;
-import java.util.List;
 
 public class Student {
 
+    @NotNull(message = "is required")
+    @Size(min = 1, message = "is required")
     private String firstName;
+
+    @NotNull(message = "is required")
+    @Size(min = 1, message = "is required")
     private String lastName;
+
+    @NotNull(message = "is required")
+    @Size(min = 1, message = "is required")
     private String country;
+
+    @NotNull(message = "is required")
+    @Size(min = 1, message = "is required")
     private LinkedHashMap<String, String> countryOptions;
+
+    @NotNull(message = "is required")
+    @Size(min = 1, message = "is required")
     private String favoriteLanguage;
+
+    @NotNull(message = "is required")
+    @Size(min = 1, message = "is required")
     private LinkedHashMap<String, String> favoriteLanguageOptions;
+
+    @NotNull(message = "is required")
+    @Size(min = 1, message = "is required")
     private String operatingSystem;
+
+    @NotNull(message = "is required")
+    @Size(min = 1, message = "is required")
     private ArrayList<String> operatingSystemOptions;
 
     public Student() {
