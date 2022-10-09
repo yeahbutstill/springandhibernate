@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Spring MVC Demo - Home Page</title>
-</head>
+
 <body>
 
 Hello World of Spring!
