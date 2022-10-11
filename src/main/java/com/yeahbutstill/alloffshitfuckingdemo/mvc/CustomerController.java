@@ -1,5 +1,6 @@
 package com.yeahbutstill.alloffshitfuckingdemo.mvc;
 
+import com.yeahbutstill.alloffshitfuckingdemo.mvc.entity.Customer;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

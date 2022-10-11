@@ -1,5 +1,6 @@
 package com.yeahbutstill.alloffshitfuckingdemo.mvc;
 
+import com.yeahbutstill.alloffshitfuckingdemo.mvc.entity.Student;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;

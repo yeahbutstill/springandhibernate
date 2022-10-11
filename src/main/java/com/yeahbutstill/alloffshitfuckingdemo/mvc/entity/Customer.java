@@ -1,4 +1,4 @@
-package com.yeahbutstill.alloffshitfuckingdemo.mvc;
+package com.yeahbutstill.alloffshitfuckingdemo.mvc.entity;
 
 import com.yeahbutstill.alloffshitfuckingdemo.mvc.helper.PayCode;
 
