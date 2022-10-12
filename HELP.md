@@ -1,11 +1,14 @@
 # Read Me First
+
 The following was discovered as part of building this project:
 
-* The original package name 'com.yeahbutstill.all-off-shit-fucking-demo' is invalid and this project uses 'com.yeahbutstill.alloffshitfuckingdemo' instead.
+* The original package name 'com.yeahbutstill.all-off-shit-fucking-demo' is invalid and this project uses '
+  com.yeahbutstill.alloffshitfuckingdemo' instead.
 
 # Getting Started
 
 ### Reference Documentation
+
 For further reference, please consider the following sections:
 
 * [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
@@ -18,6 +21,7 @@ For further reference, please consider the following sections:
 * [Validation](https://docs.spring.io/spring-boot/docs/2.7.4/reference/htmlsingle/#io.validation)
 
 ### Guides
+
 The following guides illustrate how to use some features concretely:
 
 * [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)

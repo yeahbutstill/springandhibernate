@@ -5,7 +5,7 @@
 <html>
 
 <head>
-	<title>Customer Confirmation</title>
+    <title>Customer Confirmation</title>
 </head>
 
 <body>

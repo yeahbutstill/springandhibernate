@@ -5,7 +5,7 @@
 <html>
 
 <head>
-	<title>Student Confirmation</title>
+    <title>Student Confirmation</title>
 </head>
 
 <body>
@@ -25,11 +25,11 @@ Favorite Language: ${student.favoriteLanguage}
 Operating Systems:
 
 <ul>
-	<c:forEach var="temp" items="${student.operatingSystems}">
+    <c:forEach var="temp" items="${student.operatingSystems}">
 
-		<li> ${temp} </li>
+        <li> ${temp} </li>
 
-	</c:forEach>
+    </c:forEach>
 </ul>
 
 </body>

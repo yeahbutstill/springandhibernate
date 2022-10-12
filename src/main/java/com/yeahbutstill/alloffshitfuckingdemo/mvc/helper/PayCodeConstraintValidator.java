@@ -3,7 +3,7 @@ package com.yeahbutstill.alloffshitfuckingdemo.mvc.helper;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class PayCodeConstraintValidator  implements ConstraintValidator<PayCode, String> {
+public class PayCodeConstraintValidator implements ConstraintValidator<PayCode, String> {
 
     private String[] payCodePrefix;
 
