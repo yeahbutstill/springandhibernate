@@ -1,6 +1,7 @@
 package com.yeahbutstill.alloffshitfuckingdemo.mvc.entity;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -21,13 +22,26 @@ public class StudentJPA {
 	@Column(name = "email")
 	private String email;
 
+	@Column(name="date_of_birth")
+	@Temporal(TemporalType.DATE)
+	private Date dateOfBirth;
+
 	public StudentJPA() {
 	}
 
-	public StudentJPA(String firstName, String lastName, String email) {
+	public StudentJPA(String firstName, String lastName, String email, Date dateOfBirth) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 
 	public Integer getId() {
@@ -72,7 +86,8 @@ public class StudentJPA {
 		if (!Objects.equals(id, that.id)) return false;
 		if (!Objects.equals(firstName, that.firstName)) return false;
 		if (!Objects.equals(lastName, that.lastName)) return false;
-		return Objects.equals(email, that.email);
+		if (!Objects.equals(email, that.email)) return false;
+		return Objects.equals(dateOfBirth, that.dateOfBirth);
 	}
 
 	@Override
@@ -81,16 +96,18 @@ public class StudentJPA {
 		result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
 		result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
 		result = 31 * result + (email != null ? email.hashCode() : 0);
+		result = 31 * result + (dateOfBirth != null ? dateOfBirth.hashCode() : 0);
 		return result;
 	}
 
 	@Override
 	public String toString() {
 		return "StudentJPA{" +
-				"id='" + id + '\'' +
+				"id=" + id +
 				", firstName='" + firstName + '\'' +
 				", lastName='" + lastName + '\'' +
 				", email='" + email + '\'' +
+				", dateOfBirth=" + dateOfBirth +
 				'}';
 	}
 }

@@ -9,6 +9,9 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 
+import java.time.Instant;
+import java.util.Date;
+
 @SpringBootApplication
 public class AllOffShitFuckingDemoApplication extends SpringBootServletInitializer {
 
@@ -24,15 +27,14 @@ public class AllOffShitFuckingDemoApplication extends SpringBootServletInitializ
 	@Bean
 	CommandLineRunner runner(StudentRepository repo) {
 
-		return args -> {
-			repo.save(
-					new StudentJPA(
-							"Dani",
-							"Setiawan",
-							"dani@yeahbutstill"
-					)
-			);
-		};
+		return args -> repo.save(
+				new StudentJPA(
+						"Ushiho",
+						"Totora",
+						"ushio@yeahbutstill",
+						Date.from(Instant.ofEpochSecond(2292012))
+				)
+		);
 
 	}
 }
