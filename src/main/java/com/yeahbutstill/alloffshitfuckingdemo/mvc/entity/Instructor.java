@@ -1,11 +1,26 @@
 package com.yeahbutstill.alloffshitfuckingdemo.mvc.entity;
 
 import javax.persistence.*;
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "instructor")
 public class Instructor {
+
+    // annotate the class as an entity and map to db table
+
+    // define the fields
+
+    // annotate the fields with db column names
+
+    // ** set up mapping to InstructorDetail entity
+
+    // create constructors
+
+    // generate getter/setter methods
+
+    // generate toString() method
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +40,15 @@ public class Instructor {
     @JoinColumn(name = "instructor_detail_id")
     private InstructorDetail instructorDetail;
 
+    @OneToMany(fetch = FetchType.LAZY,
+            mappedBy = "instructor",
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+                    CascadeType.DETACH, CascadeType.REFRESH})
+    private List<Course> courses;
+
+
     public Instructor() {
+
     }
 
     public Instructor(String firstName, String lastName, String email) {
@@ -75,40 +98,38 @@ public class Instructor {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Instructor that = (Instructor) o;
-
-        if (id != that.id) return false;
-        if (!Objects.equals(firstName, that.firstName)) return false;
-        if (!Objects.equals(lastName, that.lastName)) return false;
-        if (!Objects.equals(email, that.email)) return false;
-        return Objects.equals(instructorDetail, that.instructorDetail);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
-        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + (instructorDetail != null ? instructorDetail.hashCode() : 0);
-        return result;
-    }
-
-    @Override
     public String toString() {
-        return "Instructor{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", instructorDetail=" + instructorDetail +
-                '}';
+        return "Instructor [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+                + ", instructorDetail=" + instructorDetail + "]";
     }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
+
+    // add convenience methods for bi-directional relationship
+
+    public void add(Course tempCourse) {
+
+        if (courses == null) {
+            courses = new ArrayList<>();
+        }
+
+        courses.add(tempCourse);
+
+        tempCourse.setInstructor(this);
+    }
+
 }
+
+
+
+
+
 
 
 

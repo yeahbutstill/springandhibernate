@@ -8,6 +8,8 @@ public class Customer {
 
     @NotNull(message = "is required")
     @Size(min = 1, message = "is required")
+    @NotBlank(message = "is required")
+    @NotEmpty(message = "is required")
     private String firstName;
 
     @NotNull(message = "is required")

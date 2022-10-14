@@ -9,7 +9,7 @@
     <session-factory>
         <!-- Database connection settings -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://${MYSQL_HOST:localhost}:6603/mysqlpzn-db</property>
+        <property name="connection.url">jdbc:mysql://${MYSQL_HOST:localhost}:6603/mysqlpzn-db?useSSL=false</property>
         <property name="connection.username">yukbelajar</property>
         <property name="connection.password">PNSJkxXvVNDAhePMuExTBuRR</property>
 

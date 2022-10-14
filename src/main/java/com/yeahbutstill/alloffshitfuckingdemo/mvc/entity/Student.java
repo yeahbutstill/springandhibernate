@@ -1,36 +1,41 @@
 package com.yeahbutstill.alloffshitfuckingdemo.mvc.entity;
 
-import java.util.LinkedHashMap;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "student")
 public class Student {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
+
+    @Column(name = "first_name")
     private String firstName;
+
+    @Column(name = "last_name")
     private String lastName;
-    private String country;
-    private LinkedHashMap<String, String> countryOptions;
-    private String favoriteLanguage;
-    private String[] operatingSystems;
+
+    @Column(name = "email")
+    private String email;
 
     public Student() {
 
-        // populate country options: used ISO country code
-        countryOptions = new LinkedHashMap<>();
-
-        countryOptions.put("BR", "Brazil");
-        countryOptions.put("FR", "France");
-        countryOptions.put("DE", "Germany");
-        countryOptions.put("IN", "India");
-        countryOptions.put("US", "United States of America");
-
     }
 
-    public Student(String firstName, String lastName, String country, LinkedHashMap<String, String> countryOptions, String favoriteLanguage, String[] operatingSystems) {
+    public Student(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.country = country;
-        this.countryOptions = countryOptions;
-        this.favoriteLanguage = favoriteLanguage;
-        this.operatingSystems = operatingSystems;
+        this.email = email;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -49,35 +54,21 @@ public class Student {
         this.lastName = lastName;
     }
 
-    public String getCountry() {
-        return country;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public LinkedHashMap<String, String> getCountryOptions() {
-        return countryOptions;
+    @Override
+    public String toString() {
+        return "Student [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
     }
 
-    public void setCountryOptions(LinkedHashMap<String, String> countryOptions) {
-        this.countryOptions = countryOptions;
-    }
-
-    public String getFavoriteLanguage() {
-        return favoriteLanguage;
-    }
-
-    public void setFavoriteLanguage(String favoriteLanguage) {
-        this.favoriteLanguage = favoriteLanguage;
-    }
-
-    public String[] getOperatingSystems() {
-        return operatingSystems;
-    }
-
-    public void setOperatingSystems(String[] operatingSystems) {
-        this.operatingSystems = operatingSystems;
-    }
 }
+
+
+
+

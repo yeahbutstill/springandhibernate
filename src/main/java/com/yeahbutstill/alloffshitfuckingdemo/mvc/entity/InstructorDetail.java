@@ -1,11 +1,22 @@
 package com.yeahbutstill.alloffshitfuckingdemo.mvc.entity;
 
 import javax.persistence.*;
-import java.util.Objects;
 
 @Entity
 @Table(name = "instructor_detail")
 public class InstructorDetail {
+
+    // annotate the class as an entity and map to db table
+
+    // define the fields
+
+    // annotate the fields with db column names
+
+    // create constructors
+
+    // generate getter/setter methods
+
+    // generate toString() method
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,12 +29,31 @@ public class InstructorDetail {
     @Column(name = "hobby")
     private String hobby;
 
+    // add new field for instructor (also add getter/setters)
+
+    // add @OneToOne annotation
+
+    @OneToOne(mappedBy = "instructorDetail",
+            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
+                    CascadeType.REFRESH})
+    private Instructor instructor;
+
+
     public InstructorDetail() {
+
     }
 
     public InstructorDetail(String youtubeChannel, String hobby) {
         this.youtubeChannel = youtubeChannel;
         this.hobby = hobby;
+    }
+
+    public Instructor getInstructor() {
+        return instructor;
+    }
+
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
     }
 
     public int getId() {
@@ -51,34 +81,10 @@ public class InstructorDetail {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        InstructorDetail that = (InstructorDetail) o;
-
-        if (id != that.id) return false;
-        if (!Objects.equals(youtubeChannel, that.youtubeChannel))
-            return false;
-        return Objects.equals(hobby, that.hobby);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (youtubeChannel != null ? youtubeChannel.hashCode() : 0);
-        result = 31 * result + (hobby != null ? hobby.hashCode() : 0);
-        return result;
-    }
-
-    @Override
     public String toString() {
-        return "InstructorDetail{" +
-                "id=" + id +
-                ", youtubeChannel='" + youtubeChannel + '\'' +
-                ", hobby='" + hobby + '\'' +
-                '}';
+        return "InstructorDetail [id=" + id + ", youtubeChannel=" + youtubeChannel + ", hobby=" + hobby + "]";
     }
+
 }
 
 
