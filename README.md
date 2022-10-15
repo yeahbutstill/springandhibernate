@@ -9,7 +9,8 @@ docker run --rm \
 -e MYSQL_ROOT_PASSWORD=PNSJkxXvVNDAhePMuExTBuRR \
 -e TZ=Asia/Jakarta \
 -p 6603:3306 \
--v "$PWD/docker/mysql-pzn-db/conf.d":/etc/mysql/conf.d \
--v "$PWD/storage/docker/mysqlpzn-db-data":/var/lib/mysql \
+-v "$PWD/mydata/mysql/log":/var/log/mysql \
+-v "$PWD/mydata/mysql/data":/var/lib/mysql \
+-v "$PWD/mydata/mysql/conf":/etc/mysql/conf.d \
 mysql:8
 ```
