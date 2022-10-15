@@ -1,80 +1,67 @@
 package com.yeahbutstill.alloffshitfuckingdemo.mvc.entity;
 
-import com.yeahbutstill.alloffshitfuckingdemo.mvc.helper.PayCode;
+import javax.persistence.*;
 
-import javax.validation.constraints.*;
-
+@Entity
+@Table(name="customer")
 public class Customer {
 
-    @NotNull(message = "is required")
-    @Size(min = 1, message = "is required")
-    @NotBlank(message = "is required")
-    @NotEmpty(message = "is required")
-    private String firstName;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id")
+	private int id;
+	
+	@Column(name="first_name")
+	private String firstName;
+	
+	@Column(name="last_name")
+	private String lastName;
+	
+	@Column(name="email")
+	private String email;
+	
+	public Customer() {
+		
+	}
 
-    @NotNull(message = "is required")
-    @Size(min = 1, message = "is required")
-    private String lastName;
+	public int getId() {
+		return id;
+	}
 
-    @NotNull(message = "is required")
-    @Min(value = 0, message = "must be greater than or equal to zero")
-    @Max(value = 10, message = "must be less than or equal to 10")
-    private Integer freePasses;
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    @Pattern(regexp = "^[a-zA-Z0-9]{5}", message = "only 5 char/digits")
-    @NotNull(message = "is required")
-    @Size(min = 1, message = "is required")
-    private String postalCode;
+	public String getFirstName() {
+		return firstName;
+	}
 
-    @PayCode(value = {"PAYS", "PAY"}, message = "must start with PAYS or PAY")
-    @NotNull(message = "is required")
-    private String payCode;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
-    public String getPayCode() {
-        return payCode;
-    }
+	public String getLastName() {
+		return lastName;
+	}
 
-    public void setPayCode(String payCode) {
-        this.payCode = payCode;
-    }
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 
-    public String getPostalCode() {
-        return postalCode;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public Integer getFreePasses() {
-        return freePasses;
-    }
-
-    public void setFreePasses(Integer freePasses) {
-        this.freePasses = freePasses;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-
+	@Override
+	public String toString() {
+		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
+	}
+		
 }
-
-
-
 
 
 

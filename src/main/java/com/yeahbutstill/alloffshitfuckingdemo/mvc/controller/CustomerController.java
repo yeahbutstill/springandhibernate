@@ -1,62 +1,77 @@
 package com.yeahbutstill.alloffshitfuckingdemo.mvc.controller;
 
 import com.yeahbutstill.alloffshitfuckingdemo.mvc.entity.Customer;
-import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import com.yeahbutstill.alloffshitfuckingdemo.mvc.service.CustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
 
-    // add an initbinder ... to convert trim input strings
-    // remove leading and trailing whitespace
-    // resolve issue for our validation
-    @InitBinder
-    public void initBinder(WebDataBinder dataBinder) {
-
-        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
-
-        dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
-    }
-
-
-    @RequestMapping("/showForm")
-    public String showForm(Model theModel) {
-
-        theModel.addAttribute("customer", new Customer());
-
-        return "customer-form";
-    }
-
-    @RequestMapping("/processForm")
-    public String processForm(
-            @Valid @ModelAttribute("customer") Customer theCustomer,
-            BindingResult theBindingResult) {
-
-        System.out.println("Last name: |" + theCustomer.getFirstName() + "|");
-        System.out.println("Last name: |" + theCustomer.getLastName() + "|");
-        System.out.println("Last name: |" + theCustomer.getFreePasses() + "|");
-        System.out.println("Last name: |" + theCustomer.getPostalCode() + "|");
-        System.out.println("Last name: |" + theCustomer.getPayCode() + "|");
-        System.out.println("Binding result: " + theBindingResult);
-
-        if (theBindingResult.hasErrors()) {
-            return "customer-form";
-        } else {
-            return "customer-confirmation";
-        }
-    }
+	// need to inject our customer service
+	@Autowired
+	private CustomerService customerService;
+	
+	@GetMapping("/list")
+	public String listCustomers(Model theModel) {
+		
+		// get customers from the service
+		List<Customer> theCustomers = customerService.getCustomers();
+				
+		// add the customers to the model
+		theModel.addAttribute("customers", theCustomers);
+		
+		return "list-customers";
+	}
+	
+	@GetMapping("/showFormForAdd")
+	public String showFormForAdd(Model theModel) {
+		
+		// create model attribute to bind form data
+		Customer theCustomer = new Customer();
+		
+		theModel.addAttribute("customer", theCustomer);
+		
+		return "customer-form";
+	}
+	
+	@PostMapping("/saveCustomer")
+	public String saveCustomer(@ModelAttribute("customer") Customer theCustomer) {
+		
+		// save the customer using our service
+		customerService.saveCustomer(theCustomer);	
+		
+		return "redirect:/customer/list";
+	}
+	
+	@GetMapping("/showFormForUpdate")
+	public String showFormForUpdate(@RequestParam("customerId") int theId,
+									Model theModel) {
+		
+		// get the customer from our service
+		Customer theCustomer = customerService.getCustomer(theId);	
+		
+		// set customer as a model attribute to pre-populate the form
+		theModel.addAttribute("customer", theCustomer);
+		
+		// send over to our form		
+		return "customer-form";
+	}
+	
+	@GetMapping("/delete")
+	public String deleteCustomer(@RequestParam("customerId") int theId) {
+		
+		// delete the customer
+		customerService.deleteCustomer(theId);
+		
+		return "redirect:/customer/list";
+	}
 }
-
-
 
 
 
