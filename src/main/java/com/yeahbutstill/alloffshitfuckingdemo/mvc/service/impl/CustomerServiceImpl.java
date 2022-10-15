@@ -3,7 +3,6 @@ package com.yeahbutstill.alloffshitfuckingdemo.mvc.service.impl;
 import com.yeahbutstill.alloffshitfuckingdemo.mvc.dao.CustomerDAO;
 import com.yeahbutstill.alloffshitfuckingdemo.mvc.entity.Customer;
 import com.yeahbutstill.alloffshitfuckingdemo.mvc.service.CustomerService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,36 +11,39 @@ import java.util.List;
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
-	// need to inject customer dao
-	@Autowired
-	private CustomerDAO customerDAO;
-	
-	@Override
-	@Transactional
-	public List<Customer> getCustomers() {
-		return customerDAO.getCustomers();
-	}
+    // need to inject customer dao
+    private CustomerDAO customerDAO;
 
-	@Override
-	@Transactional
-	public void saveCustomer(Customer theCustomer) {
+    public CustomerServiceImpl(CustomerDAO customerDAO) {
+        this.customerDAO = customerDAO;
+    }
 
-		customerDAO.saveCustomer(theCustomer);
-	}
+    @Override
+    @Transactional
+    public List<Customer> getCustomers() {
+        return customerDAO.getCustomers();
+    }
 
-	@Override
-	@Transactional
-	public Customer getCustomer(int theId) {
-		
-		return customerDAO.getCustomer(theId);
-	}
+    @Override
+    @Transactional
+    public void saveCustomer(Customer theCustomer) {
 
-	@Override
-	@Transactional
-	public void deleteCustomer(int theId) {
-		
-		customerDAO.deleteCustomer(theId);
-	}
+        customerDAO.saveCustomer(theCustomer);
+    }
+
+    @Override
+    @Transactional
+    public Customer getCustomer(int theId) {
+
+        return customerDAO.getCustomer(theId);
+    }
+
+    @Override
+    @Transactional
+    public void deleteCustomer(int theId) {
+
+        customerDAO.deleteCustomer(theId);
+    }
 }
 
 
