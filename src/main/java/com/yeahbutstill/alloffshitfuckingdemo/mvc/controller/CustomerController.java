@@ -2,6 +2,7 @@ package com.yeahbutstill.alloffshitfuckingdemo.mvc.controller;
 
 import com.yeahbutstill.alloffshitfuckingdemo.mvc.entity.Customer;
 import com.yeahbutstill.alloffshitfuckingdemo.mvc.service.CustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,11 +14,8 @@ import java.util.List;
 public class CustomerController {
 
     // need to inject our customer service
+    @Autowired
     private CustomerService customerService;
-
-    public CustomerController(CustomerService customerService) {
-        this.customerService = customerService;
-    }
 
     @GetMapping("/list")
     public String listCustomers(Model theModel) {
