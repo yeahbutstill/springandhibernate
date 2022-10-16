@@ -1,4 +1,4 @@
-package com.luv2code.testdb;
+package com.yeahbutstill.testdb;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -24,10 +24,10 @@ public class TestDbServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// setup connection variables
-		String user = "springstudent";
-		String pass = "springstudent";
+		String user = "yukbelajar";
+		String pass = "PNSJkxXvVNDAhePMuExTBuRR";
 		
-		String jdbcUrl = "jdbc:mysql://localhost:3306/web_customer_tracker?useSSL=false&serverTimezone=UTC";
+		String jdbcUrl = "jdbc:mysql://localhost:3306/mysqlpzn-db?useSSL=false&serverTimezone=UTC";
 		String driver = "com.mysql.cj.jdbc.Driver";
 		
 		// get connection to database
