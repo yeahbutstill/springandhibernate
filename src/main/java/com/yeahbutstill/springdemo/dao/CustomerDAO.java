@@ -1,8 +1,8 @@
 package com.yeahbutstill.springdemo.dao;
 
-import java.util.List;
-
 import com.yeahbutstill.springdemo.entity.Customer;
+
+import java.util.List;
 
 public interface CustomerDAO {
 

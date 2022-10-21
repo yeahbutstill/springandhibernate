@@ -1,8 +1,8 @@
 package com.yeahbutstill.springdemo.service;
 
-import java.util.List;
-
 import com.yeahbutstill.springdemo.entity.Customer;
+
+import java.util.List;
 
 public interface CustomerService {
 

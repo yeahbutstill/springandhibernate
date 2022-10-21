@@ -1,14 +1,13 @@
 package com.yeahbutstill.springdemo.dao;
 
-import java.util.List;
-
+import com.yeahbutstill.springdemo.entity.Customer;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.yeahbutstill.springdemo.entity.Customer;
+import java.util.List;
 
 @Repository
 public class CustomerDAOImpl implements CustomerDAO {

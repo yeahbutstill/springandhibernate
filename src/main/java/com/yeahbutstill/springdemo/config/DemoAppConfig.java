@@ -1,11 +1,6 @@
 package com.yeahbutstill.springdemo.config;
 
-import java.beans.PropertyVetoException;
-import java.util.Properties;
-import java.util.logging.Logger;
-
-import javax.sql.DataSource;
-
+import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -22,7 +17,10 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import com.mchange.v2.c3p0.ComboPooledDataSource;
+import javax.sql.DataSource;
+import java.beans.PropertyVetoException;
+import java.util.Properties;
+import java.util.logging.Logger;
 
 @Configuration
 @EnableWebMvc
@@ -34,7 +32,7 @@ public class DemoAppConfig implements WebMvcConfigurer {
 	@Autowired
 	private Environment env;
 	
-	private Logger logger = Logger.getLogger(getClass().getName());
+	private final Logger logger = Logger.getLogger(getClass().getName());
 	
 	// define a bean for ViewResolver
 
@@ -60,7 +58,7 @@ public class DemoAppConfig implements WebMvcConfigurer {
 			myDataSource.setDriverClass(env.getProperty("jdbc.driver"));		
 		}
 		catch (PropertyVetoException exc) {
-			throw new RuntimeException(exc);
+			throw new RuntimeException(exc.getMessage());
 		}
 		
 		// for sanity's sake, let's log url and user ... just to make sure we are reading the data
@@ -101,9 +99,9 @@ public class DemoAppConfig implements WebMvcConfigurer {
 		String propVal = env.getProperty(propName);
 		
 		// now convert to int
-		int intPropVal = Integer.parseInt(propVal);
-		
-		return intPropVal;
+
+		assert propVal != null;
+		return Integer.parseInt(propVal);
 	}	
 	
 	@Bean

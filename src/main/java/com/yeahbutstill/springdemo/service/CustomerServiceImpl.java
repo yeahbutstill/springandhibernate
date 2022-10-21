@@ -1,13 +1,12 @@
 package com.yeahbutstill.springdemo.service;
 
-import java.util.List;
-
+import com.yeahbutstill.springdemo.dao.CustomerDAO;
+import com.yeahbutstill.springdemo.entity.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.yeahbutstill.springdemo.dao.CustomerDAO;
-import com.yeahbutstill.springdemo.entity.Customer;
+import java.util.List;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
